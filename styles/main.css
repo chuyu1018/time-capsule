@@ -533,6 +533,35 @@ html, body {
   margin: 8px 0 16px;
 }
 
+.settings-modal-contact {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(138, 109, 59, 0.25);
+  text-align: center;
+}
+
+.settings-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-cn);
+  font-size: 0.85rem;
+  color: var(--vermilion-deep);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 12px;
+  transition: background 0.15s;
+}
+
+.settings-contact-link:hover {
+  background: rgba(193, 57, 61, 0.08);
+}
+
+.settings-contact-icon {
+  font-size: 1rem;
+}
+
 /* ============ Result panel ============ */
 .hud-panel.result-panel {
   position: absolute;

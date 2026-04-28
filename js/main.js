@@ -171,13 +171,6 @@ function bindEvents() {
     startNewGame();
   });
 
-  // Filter
-  document.querySelectorAll('input[name="round-filter"]').forEach(r => {
-    r.addEventListener('change', (e) => {
-      if (e.target.checked) state.filter = e.target.value;
-    });
-  });
-
   // Help
   document.getElementById('settings-help-button').addEventListener('click', () => showHelp(true));
   document.getElementById('settings-help-back').addEventListener('click', () => showHelp(false));

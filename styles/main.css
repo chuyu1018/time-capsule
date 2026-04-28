@@ -191,15 +191,16 @@ html, body {
 /* ============ Year overlay ============ */
 .year-overlay {
   position: absolute;
-  top: 50%;
+  bottom: 240px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 10;
-  width: min(640px, calc(100vw - 80px));
+  width: min(1920px, calc(100vw - 60px));
 }
 
 .year-shell {
-  padding: 18px 28px;
+  padding: 18px 36px;
+  width: 100%;
 }
 
 .year-content {
@@ -760,7 +761,7 @@ html, body {
   }
 
   .year-overlay {
-    top: 35%;
+    bottom: 280px;
     width: calc(100vw - 40px);
   }
 

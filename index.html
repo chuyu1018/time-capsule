@@ -110,7 +110,7 @@
       <!-- Action buttons -->
       <section class="guess-action-overlay" aria-label="操作">
         <button id="map-prompt" class="guess-action-button guess-action-button--prompt" type="button">
-          在哪？
+          请点击右侧地图选择此场景的位置
         </button>
         <button id="submit-guess" class="guess-action-button hidden" type="button">
           提交
@@ -170,9 +170,9 @@
           </div>
           <div id="settings-help-panel" class="settings-help-panel hidden">
             <p class="settings-modal-summary">
-              时间胶囊是一款受 GeoGuessr 启发的"穿越者"游戏。<br /><br />
-              你被投放进一个 360° 历史场景，要同时猜出此刻你身处何地、又是哪一年。<br /><br />
-              拖动屏幕环顾全景，在地图上落点，拨动年份滑块。距离与年代越准，得分越高。
+              你是一名误入混沌时空的穿越者，只有猜出所属空间正确的年份和位置才能够逃脱。得分越高，逃脱的几率越高。<br /><br />
+              拖动屏幕环顾全景，在地图上落点，拨动年份滑块。距离与年代越准，得分越高。<br /><br />
+              5 关一局，每关 60 秒。
             </p>
             <div class="settings-modal-actions">
               <button id="settings-help-back" class="settings-option" type="button">返回</button>
@@ -181,13 +181,33 @@
         </div>
       </section>
 
+      <!-- Rules (intro) modal —— 首次进入展示 -->
+      <section id="rules-modal" class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="rules-title">
+        <div class="settings-modal-scrim" aria-hidden="true"></div>
+        <div class="settings-modal-card rules-modal-card">
+          <div class="settings-modal-header">
+            <h2 id="rules-title" class="settings-modal-title">游戏规则</h2>
+          </div>
+          <p class="settings-modal-summary">
+            你是一名误入混沌时空的穿越者，只有猜出所属空间正确的年份和位置才能够逃脱。得分越高，逃脱的几率越高。
+            <br /><br />
+            拖动屏幕环顾全景，在地图上落点，拨动年份滑块。距离与年代越准，得分越高。
+            <br /><br />
+            5 关一局，每关 60 秒。穿越的旅程，从这里开始。
+          </p>
+          <div class="settings-modal-actions">
+            <button id="rules-start" class="settings-option" type="button">开始</button>
+          </div>
+        </div>
+      </section>
+
       <!-- Endgame -->
       <section id="endgame-modal" class="endgame-modal hidden" role="dialog" aria-modal="true" aria-labelledby="endgame-title">
         <div class="settings-modal-scrim endgame-modal-scrim" aria-hidden="true"></div>
         <div class="settings-modal-card endgame-modal-card">
-          <div class="settings-modal-header">
+          <div class="settings-modal-header endgame-modal-rank-header">
             <h2 id="endgame-title" class="settings-modal-title endgame-modal-title">穿越者</h2>
-            <p id="endgame-quote" class="endgame-modal-quote">"以铜为镜，可正衣冠；以史为镜，可知兴替。"<br>—— 唐太宗</p>
+            <p id="endgame-quote" class="endgame-modal-quote hidden"></p>
           </div>
           <div class="endgame-modal-stats" aria-live="polite">
             <div class="endgame-modal-stat">

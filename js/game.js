@@ -72,11 +72,12 @@ export function formatYearError(yearErr) {
   return `${direction} ${abs} 年`;
 }
 
-/** 终局称号：根据总分给玩家一个穿越者称号 */
+/** 终局称号：根据总分给玩家一个段位（王者 → 黑铁） */
 export function endgameTitle(totalScore) {
-  if (totalScore >= 45000) return { title: '超时空旅人', quote: '"以铜为镜，可正衣冠；以史为镜，可知兴替。"\n—— 唐太宗' };
-  if (totalScore >= 38000) return { title: '世纪游侠', quote: '"鉴于往事，有资于治道。"\n—— 司马光' };
-  if (totalScore >= 28000) return { title: '岁月寻踪人', quote: '"逝者如斯夫，不舍昼夜。"\n—— 孔子' };
-  if (totalScore >= 18000) return { title: '初学穿越者', quote: '"路漫漫其修远兮，吾将上下而求索。"\n—— 屈原' };
-  return { title: '时空迷途者', quote: '"前不见古人，后不见来者。"\n—— 陈子昂' };
+  if (totalScore >= 42000) return { title: '王者', quote: '' };
+  if (totalScore >= 33000) return { title: '钻石', quote: '' };
+  if (totalScore >= 24000) return { title: '黄金', quote: '' };
+  if (totalScore >= 15000) return { title: '白银', quote: '' };
+  if (totalScore >= 7000)  return { title: '青铜', quote: '' };
+  return { title: '黑铁', quote: '' };
 }

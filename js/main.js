@@ -208,7 +208,14 @@ async function boot() {
   });
 
   bindEvents();
-  startNewGame();
+
+  // 首次进入显示规则弹窗，点击"开始"后才进入第一关
+  const rulesModal = document.getElementById('rules-modal');
+  const rulesStart = document.getElementById('rules-start');
+  rulesStart.addEventListener('click', () => {
+    rulesModal.classList.add('hidden');
+    startNewGame();
+  });
 }
 
 boot();

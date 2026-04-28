@@ -130,7 +130,14 @@ export function showEndgame(stats) {
   document.getElementById('endgame-total-distance').textContent = stats.distanceLabel;
   document.getElementById('endgame-total-time').textContent = stats.timeLabel;
   document.getElementById('endgame-title').textContent = stats.titleText;
-  document.getElementById('endgame-quote').textContent = stats.quote;
+  const quoteEl = document.getElementById('endgame-quote');
+  if (stats.quote) {
+    quoteEl.textContent = stats.quote;
+    quoteEl.classList.remove('hidden');
+  } else {
+    quoteEl.textContent = '';
+    quoteEl.classList.add('hidden');
+  }
 }
 
 export function hideEndgame() {

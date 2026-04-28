@@ -191,15 +191,15 @@ html, body {
 /* ============ Year overlay ============ */
 .year-overlay {
   position: absolute;
-  bottom: 110px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 10;
-  width: min(420px, calc(100vw - 40px));
+  width: min(640px, calc(100vw - 80px));
 }
 
 .year-shell {
-  padding: 14px 20px;
+  padding: 18px 28px;
 }
 
 .year-content {
@@ -348,6 +348,9 @@ html, body {
 
 .guess-action-button--prompt {
   background: linear-gradient(180deg, var(--vermilion), var(--vermilion-deep));
+  letter-spacing: 0.08em;
+  padding: 12px 24px;
+  font-size: 0.95rem;
 }
 
 /* ============ Settings ============ */
@@ -663,10 +666,34 @@ html, body {
   width: min(480px, calc(100vw - 40px));
 }
 
+.endgame-modal-rank-header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(138, 109, 59, 0.3);
+}
+
 .endgame-modal-title {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   color: var(--vermilion-deep);
   text-align: center;
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  padding-right: 0;
+}
+
+/* 段位徽章风格的小副标题（可选） */
+.endgame-modal-rank-header::after {
+  content: '段位';
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  color: var(--bronze);
+  font-family: var(--font-cn);
+}
+
+.rules-modal-card {
+  max-width: min(520px, calc(100vw - 40px));
 }
 
 .endgame-modal-quote {
@@ -733,7 +760,8 @@ html, body {
   }
 
   .year-overlay {
-    bottom: 240px;
+    top: 35%;
+    width: calc(100vw - 40px);
   }
 
   .guess-action-overlay {

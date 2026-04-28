@@ -191,15 +191,14 @@ html, body {
 /* ============ Year overlay ============ */
 .year-overlay {
   position: absolute;
-  bottom: 240px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 20px;
+  left: 20px;
   z-index: 10;
-  width: min(1920px, calc(100vw - 60px));
+  width: 380px;
 }
 
 .year-shell {
-  padding: 18px 36px;
+  padding: 14px 24px;
   width: 100%;
 }
 
@@ -357,7 +356,7 @@ html, body {
 /* ============ Settings ============ */
 .settings-overlay {
   position: absolute;
-  bottom: 20px;
+  bottom: 220px;
   left: 20px;
   z-index: 10;
 }
@@ -761,7 +760,8 @@ html, body {
   }
 
   .year-overlay {
-    bottom: 280px;
+    bottom: 240px;
+    left: 20px;
     width: calc(100vw - 40px);
   }
 

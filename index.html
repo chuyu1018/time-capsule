@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="时间胶囊 — 中国版时间旅行猜地点游戏。在 360° 全景中穿越，猜出地点和年代。" />
+  <title>时间胶囊 · Time Capsule</title>
+
+  <!-- Pannellum 360° viewer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+
+  <!-- MapLibre + Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.css" crossorigin="" />
+
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/glass.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="viewer-stage">
+      <!-- 360° panorama -->
+      <div id="viewer" aria-label="360 度全景"></div>
+
+      <!-- Brand -->
+      <div class="brand-overlay" aria-label="时间胶囊 logo">
+        <span class="brand-icon" aria-hidden="true">⏳</span>
+        <span class="brand-wordmark">时间胶囊</span>
+      </div>
+
+      <!-- Round timer -->
+      <section class="timer-overlay" aria-label="回合计时">
+        <div class="glass-container glass-container--rounded timer-shell">
+          <div class="glass-filter"></div>
+          <div class="glass-overlay"></div>
+          <div class="glass-specular"></div>
+          <div class="glass-content timer-content">
+            <svg id="timer-border" class="timer-border" viewBox="0 0 148 42" aria-hidden="true">
+              <path id="timer-track" class="timer-border-track" pathLength="100"
+                d="M74 1.5 H127 C137.77 1.5 146.5 10.23 146.5 21 C146.5 31.77 137.77 40.5 127 40.5 H21 C10.23 40.5 1.5 31.77 1.5 21 C1.5 10.23 10.23 1.5 21 1.5 H74"></path>
+              <path id="timer-progress" class="timer-border-progress" pathLength="100"
+                d="M74 1.5 H127 C137.77 1.5 146.5 10.23 146.5 21 C146.5 31.77 137.77 40.5 127 40.5 H21 C10.23 40.5 1.5 31.77 1.5 21 C1.5 10.23 10.23 1.5 21 1.5 H74"></path>
+            </svg>
+            <div id="timer-label" class="timer-label">1:00</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Round status -->
+      <section class="round-status-overlay" aria-label="进度">
+        <p id="round-status-label" class="round-status-label">第 1 / 5 关</p>
+        <p id="round-status-score" class="round-status-score">0</p>
+      </section>
+
+      <!-- Year slider -->
+      <section id="year-overlay" class="year-overlay" aria-label="年份选择">
+        <div class="glass-container glass-container--rounded year-shell">
+          <div class="glass-filter"></div>
+          <div class="glass-overlay"></div>
+          <div class="glass-specular"></div>
+          <div class="glass-content year-content">
+            <label for="year-input" class="year-label">猜测年份</label>
+            <div class="year-readout" id="year-readout">1800</div>
+            <input id="year-input" class="year-input" type="range" min="1500" max="2026" value="1800" step="1" />
+            <div class="year-range">
+              <span>1500</span>
+              <span>2026</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Result panel -->
+      <section id="result-card" class="hud-panel result-panel hidden" aria-live="polite">
+        <div class="win98-panel-body result-panel-body">
+          <div class="result-list">
+            <div id="distance-row" class="result-row reveal-piece">
+              <span class="metric-label">距离误差：</span>
+              <strong id="distance-result">-</strong>
+            </div>
+            <div id="time-row" class="result-row reveal-piece">
+              <span class="metric-label">年代误差：</span>
+              <strong id="time-result">-</strong>
+            </div>
+            <div id="total-row" class="result-row total-score reveal-piece">
+              <span class="metric-label">本关得分：</span>
+              <strong id="total-score-result">-</strong>
+            </div>
+          </div>
+          <p id="answer-summary" class="supporting-text"></p>
+          <section id="wiki-summary" class="supporting-text wiki-summary-card is-hidden" aria-live="polite">
+            <div class="wiki-summary-content">
+              <p id="wiki-summary-title" class="wiki-summary-title"></p>
+              <p id="wiki-summary-extract" class="wiki-summary-extract"></p>
+              <p id="wiki-summary-meta" class="wiki-summary-meta"></p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Map dock -->
+      <section class="map-dock" aria-label="猜测地图">
+        <div id="guess-map"></div>
+      </section>
+
+      <button id="mobile-hide-map" class="mobile-map-hide-button hidden" type="button" aria-label="收起地图">
+        收起地图
+      </button>
+
+      <!-- Action buttons -->
+      <section class="guess-action-overlay" aria-label="操作">
+        <button id="map-prompt" class="guess-action-button guess-action-button--prompt" type="button">
+          在哪？
+        </button>
+        <button id="submit-guess" class="guess-action-button hidden" type="button">
+          提交
+        </button>
+        <button id="next-round" class="guess-action-button hidden" type="button">
+          下一关
+        </button>
+      </section>
+
+      <!-- Settings -->
+      <section class="settings-overlay" aria-label="设置">
+        <button class="settings-button" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="settings-modal">
+          设置
+        </button>
+      </section>
+
+      <section id="settings-modal" class="settings-modal hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+        <button class="settings-modal-scrim" type="button" data-settings-close aria-label="关闭设置"></button>
+        <div class="settings-modal-card">
+          <div class="settings-modal-header">
+            <h2 id="settings-title" class="settings-modal-title">设置</h2>
+            <span class="settings-modal-mobile-note">建议桌面端体验</span>
+          </div>
+          <div id="settings-panel">
+            <div class="settings-modal-actions">
+              <button class="settings-option" type="button" data-settings-action="new-game">新游戏</button>
+            </div>
+            <div class="settings-selector-group">
+              <p class="settings-selector-title">时代筛选</p>
+              <label class="settings-selector">
+                <input class="settings-selector-input" type="radio" name="round-filter" value="all" checked />
+                <span class="settings-selector-face">全部</span>
+              </label>
+              <label class="settings-selector">
+                <input class="settings-selector-input" type="radio" name="round-filter" value="ming" />
+                <span class="settings-selector-face">明</span>
+              </label>
+              <label class="settings-selector">
+                <input class="settings-selector-input" type="radio" name="round-filter" value="qing" />
+                <span class="settings-selector-face">清</span>
+              </label>
+              <label class="settings-selector">
+                <input class="settings-selector-input" type="radio" name="round-filter" value="republic" />
+                <span class="settings-selector-face">民国</span>
+              </label>
+              <label class="settings-selector">
+                <input class="settings-selector-input" type="radio" name="round-filter" value="modern" />
+                <span class="settings-selector-face">当代</span>
+              </label>
+            </div>
+            <div class="settings-modal-footer">
+              <p class="settings-modal-version" aria-hidden="true">beta v0.1</p>
+              <div class="settings-modal-footer-actions">
+                <button id="settings-help-button" class="settings-modal-help" type="button">帮助</button>
+              </div>
+            </div>
+          </div>
+          <div id="settings-help-panel" class="settings-help-panel hidden">
+            <p class="settings-modal-summary">
+              时间胶囊是一款受 GeoGuessr 启发的"穿越者"游戏。<br /><br />
+              你被投放进一个 360° 历史场景，要同时猜出此刻你身处何地、又是哪一年。<br /><br />
+              拖动屏幕环顾全景，在地图上落点，拨动年份滑块。距离与年代越准，得分越高。
+            </p>
+            <div class="settings-modal-actions">
+              <button id="settings-help-back" class="settings-option" type="button">返回</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Endgame -->
+      <section id="endgame-modal" class="endgame-modal hidden" role="dialog" aria-modal="true" aria-labelledby="endgame-title">
+        <div class="settings-modal-scrim endgame-modal-scrim" aria-hidden="true"></div>
+        <div class="settings-modal-card endgame-modal-card">
+          <div class="settings-modal-header">
+            <h2 id="endgame-title" class="settings-modal-title endgame-modal-title">穿越者</h2>
+            <p id="endgame-quote" class="endgame-modal-quote">"以铜为镜，可正衣冠；以史为镜，可知兴替。"<br>—— 唐太宗</p>
+          </div>
+          <div class="endgame-modal-stats" aria-live="polite">
+            <div class="endgame-modal-stat">
+              <span>总分</span>
+              <strong id="endgame-total-score">0</strong>
+            </div>
+            <div class="endgame-modal-stat">
+              <span>累计距离误差</span>
+              <strong id="endgame-total-distance">0 公里</strong>
+            </div>
+            <div class="endgame-modal-stat">
+              <span>累计年代误差</span>
+              <strong id="endgame-total-time">0 年</strong>
+            </div>
+          </div>
+          <button id="endgame-new-game" class="settings-option endgame-modal-action" type="button">
+            再来一局
+          </button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/maplibre-gl@5.9.0/dist/maplibre-gl.js" crossorigin=""></script>
+  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js" crossorigin=""></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

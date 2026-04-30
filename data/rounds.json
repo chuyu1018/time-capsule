@@ -9,7 +9,10 @@
       "title": "紫禁城 · 太和殿登基",
       "era": "ming",
       "year": 1521,
-      "location": { "lat": 39.9163, "lng": 116.3914 },
+      "location": {
+        "lat": 39.9163,
+        "lng": 116.3914
+      },
       "panoramaUrl": "assets/panoramas/01-forbidden-city.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -19,6 +22,11 @@
         "title": "太和殿",
         "url": "https://zh.wikipedia.org/wiki/%E5%A4%AA%E5%92%8C%E6%AE%BF",
         "summary": "紫禁城外朝三大殿之首，明永乐十八年（1420）建成，初名奉天殿。明清两代皇帝登基、册立皇后等大典皆在此举行。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/01-forbidden-city.jpg",
+        "caption": "太和殿 现存实景",
+        "credit": "Wikimedia Commons / CC BY-SA"
       }
     },
     {
@@ -26,7 +34,10 @@
       "title": "苏州 · 拙政园文人雅集",
       "era": "ming",
       "year": 1560,
-      "location": { "lat": 31.3270, "lng": 120.6299 },
+      "location": {
+        "lat": 31.327,
+        "lng": 120.6299
+      },
       "panoramaUrl": "assets/panoramas/02-zhuozheng-garden.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -36,6 +47,11 @@
         "title": "拙政园",
         "url": "https://zh.wikipedia.org/wiki/%E6%8B%99%E6%94%BF%E5%9B%AD",
         "summary": "苏州四大名园之一，江南古典园林的杰出代表，1997 年列入世界文化遗产。占地约 5.2 公顷。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/02-zhuozheng-garden.jpg",
+        "caption": "苏州拙政园 现存实景",
+        "credit": "Wikimedia Commons / CC BY-SA"
       }
     },
     {
@@ -43,7 +59,10 @@
       "title": "景德镇 · 御窑烧瓷",
       "era": "qing",
       "year": 1720,
-      "location": { "lat": 29.2700, "lng": 117.1780 },
+      "location": {
+        "lat": 29.27,
+        "lng": 117.178
+      },
       "panoramaUrl": "assets/panoramas/03-jingdezhen-kiln.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -53,6 +72,11 @@
         "title": "景德镇御窑",
         "url": "https://zh.wikipedia.org/wiki/%E6%99%AF%E5%BE%B7%E9%95%87",
         "summary": "明清两代专为宫廷烧造瓷器的官窑所在地。素有'瓷都'之称，自宋代以来即为中国瓷器制造中心。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/03-jingdezhen-kiln.jpg",
+        "caption": "《景德镇陶录》清代版画",
+        "credit": "Wikimedia Commons / Public Domain"
       }
     },
     {
@@ -60,7 +84,10 @@
       "title": "圆明园 · 西洋楼鼎盛",
       "era": "qing",
       "year": 1780,
-      "location": { "lat": 40.0080, "lng": 116.2980 },
+      "location": {
+        "lat": 40.008,
+        "lng": 116.298
+      },
       "panoramaUrl": "assets/panoramas/04-yuanmingyuan.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -70,6 +97,11 @@
         "title": "圆明园",
         "url": "https://zh.wikipedia.org/wiki/%E5%9C%86%E6%98%8E%E5%9B%AD",
         "summary": "清代大型皇家园林，由圆明园、长春园、绮春园三园组成，被誉为'万园之园'。1860 年第二次鸦片战争中被英法联军劫掠焚毁。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/04-yuanmingyuan.jpg",
+        "caption": "圆明园 西洋楼大水法遗址",
+        "credit": "Wikimedia Commons / CC BY-SA"
       }
     },
     {
@@ -77,7 +109,10 @@
       "title": "广州 · 十三行口岸",
       "era": "qing",
       "year": 1840,
-      "location": { "lat": 23.1180, "lng": 113.2450 },
+      "location": {
+        "lat": 23.118,
+        "lng": 113.245
+      },
       "panoramaUrl": "assets/panoramas/05-canton-thirteen-factories.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -87,6 +122,11 @@
         "title": "广州十三行",
         "url": "https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%B7%9E%E5%8D%81%E4%B8%89%E8%A1%8C",
         "summary": "清代专做对外贸易的洋货行总称。1757 年至 1842 年是中国唯一对欧美贸易商埠，鸦片战争前为世界最重要的贸易港之一。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/05-canton-thirteen-factories.jpg",
+        "caption": "广州十三行洋商馆 19 世纪外销画",
+        "credit": "Wikimedia Commons / Public Domain"
       }
     },
     {
@@ -94,7 +134,10 @@
       "title": "上海 · 外滩夜色",
       "era": "republic",
       "year": 1925,
-      "location": { "lat": 31.2400, "lng": 121.4900 },
+      "location": {
+        "lat": 31.24,
+        "lng": 121.49
+      },
       "panoramaUrl": "assets/panoramas/06-shanghai-bund-1925.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -104,6 +147,11 @@
         "title": "上海外滩",
         "url": "https://zh.wikipedia.org/wiki/%E5%A4%96%E6%BB%A9",
         "summary": "上海黄浦江畔的著名风景线，全长 1.5 公里。1844 年起被划为英租界，是上海近代城市的起点。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/06-shanghai-bund-1925.jpg",
+        "caption": "上海外滩 1928 年实景",
+        "credit": "Wikimedia Commons / Public Domain"
       }
     },
     {
@@ -111,7 +159,10 @@
       "title": "北京 · 老胡同生活",
       "era": "republic",
       "year": 1935,
-      "location": { "lat": 39.9370, "lng": 116.4000 },
+      "location": {
+        "lat": 39.937,
+        "lng": 116.4
+      },
       "panoramaUrl": "assets/panoramas/07-beijing-hutong-1935.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -121,6 +172,11 @@
         "title": "北京胡同",
         "url": "https://zh.wikipedia.org/wiki/%E8%83%A1%E5%90%8C",
         "summary": "北京特有的传统街巷形式，源自元大都规划。鼎盛时期北京有胡同 6000 余条，是老北京市井生活的核心载体。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/07-beijing-hutong-1935.jpg",
+        "caption": "北京胡同传统街巷",
+        "credit": "Wikimedia Commons / CC BY-SA"
       }
     },
     {
@@ -128,7 +184,10 @@
       "title": "深圳 · 80 年代特区工地",
       "era": "modern",
       "year": 1985,
-      "location": { "lat": 22.5470, "lng": 114.0850 },
+      "location": {
+        "lat": 22.547,
+        "lng": 114.085
+      },
       "panoramaUrl": "assets/panoramas/08-shenzhen-1985.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -138,6 +197,11 @@
         "title": "深圳经济特区",
         "url": "https://zh.wikipedia.org/wiki/%E6%B7%B1%E5%9C%B3%E7%B6%93%E6%BF%9F%E7%89%B9%E5%8D%80",
         "summary": "中国设立的第一个经济特区，1980 年 8 月正式成立。从渔村发展为现代化大都市，被誉为'中国改革开放的窗口'。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/08-shenzhen-1985.jpg",
+        "caption": "老深圳体育馆 1980 年代地标",
+        "credit": "Wikimedia Commons / CC BY-SA"
       }
     },
     {
@@ -145,7 +209,10 @@
       "title": "香港 · 回归之夜",
       "era": "modern",
       "year": 1997,
-      "location": { "lat": 22.2820, "lng": 114.1580 },
+      "location": {
+        "lat": 22.282,
+        "lng": 114.158
+      },
       "panoramaUrl": "assets/panoramas/09-hongkong-handover-1997.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -155,6 +222,11 @@
         "title": "香港回归",
         "url": "https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E5%9B%9E%E5%BD%92",
         "summary": "1997 年 7 月 1 日中华人民共和国对香港恢复行使主权，香港特别行政区成立。'一国两制'方针在香港首次实施。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/09-hongkong-handover-1997.png",
+        "caption": "1997 年香港回归交接仪式",
+        "credit": "Wikimedia Commons / Fair Use"
       }
     },
     {
@@ -162,7 +234,10 @@
       "title": "上海 · 陆家嘴当代天际线",
       "era": "modern",
       "year": 2024,
-      "location": { "lat": 31.2400, "lng": 121.4990 },
+      "location": {
+        "lat": 31.24,
+        "lng": 121.499
+      },
       "panoramaUrl": "assets/panoramas/10-lujiazui-2024.jpg",
       "panoramaType": "partial",
       "haov": 220,
@@ -172,6 +247,11 @@
         "title": "陆家嘴",
         "url": "https://zh.wikipedia.org/wiki/%E9%99%86%E5%AE%B6%E5%98%B4",
         "summary": "上海浦东新区的金融贸易区，黄浦江与浦东大道交汇处。中国首屈一指的金融中心，与曼哈顿、金融城并列世界级 CBD。"
+      },
+      "historicalImage": {
+        "url": "assets/historical/10-lujiazui-2024.jpg",
+        "caption": "陆家嘴 与 外滩全景",
+        "credit": "Wikimedia Commons / CC BY-SA"
       }
     }
   ]

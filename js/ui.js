@@ -60,6 +60,18 @@ export function showResultPanel(round, scoreInfo, formatDistance, formatYearErro
   document.getElementById('total-score-result').textContent = `${scoreInfo.totalScore} / 10000`;
   document.getElementById('answer-summary').textContent = round.answer || '';
 
+  // Historical image
+  const imgCard = document.getElementById('historical-image-card');
+  if (round.historicalImage && round.historicalImage.url) {
+    imgCard.classList.remove('is-hidden');
+    document.getElementById('historical-image').src = round.historicalImage.url;
+    document.getElementById('historical-image').alt = round.historicalImage.caption || round.title;
+    document.getElementById('historical-image-caption').textContent = round.historicalImage.caption || '';
+    document.getElementById('historical-image-credit').textContent = round.historicalImage.credit || '';
+  } else {
+    imgCard.classList.add('is-hidden');
+  }
+
   // Wiki summary
   if (round.wiki) {
     const wiki = document.getElementById('wiki-summary');
